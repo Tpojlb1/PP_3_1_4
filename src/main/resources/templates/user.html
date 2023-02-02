@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Hello!</title>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-default" style="background-color: #343A40">
+        <span class="navbar-brand text-white">
+            <th:block th:inline="text">[[${users.getEmail()}]]</th:block>
+            <nobr>with roles: </nobr>
+            <th:block th:text="${users.getRoleSet()}"></th:block>
+        </span>
+        <div class="col-1">
+            <ul class="nav navbar-nav float-end">
+                <li class="nav-item">
+                    <form th:action="@{/logout}" th:method="post">
+                        <input type="submit" value="Logout     "
+                               class="bg-color: #343A40 form-control-plaintext text-white-50 ">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="row">
+    <div class="col-md-2 bg-white vh-100 p-0" style="margin: 15px auto">
+        <ul class="nav flex-column nav-pills fs-5">
+            <li class="nav-item">
+                <a class="nav-link active px-lg-5 h6" th:href="user">User</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-10 bg-light vh-150 p-4">
+        <h1>User information-page</h1>
+        <table class="table table-striped  ">
+            <tbody>
+            <tr>
+                <th class="h4 px-5">About user</th>
+            </tr>
+            <tr>
+                <td class="bg-white p-0"></td>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <td th:text="${users.getId()}"></td>
+                    <td th:text="${users.getFirstName()}"></td>
+                    <td th:text="${users.getLastName()}"></td>
+                    <td th:text="${users.getAge()}"></td>
+                    <td th:text="${users.getEmail()}"></td>
+                    <td th:text="${users.getRoleSet()}"></td>
+                    </tbody>
+                    <tr></tr>
+                </table>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</body>
+</html>
